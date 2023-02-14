@@ -1,5 +1,5 @@
-import sessionHandler from "./sessionHandler.js";
-import shopify from "./shopify.js";
+import sessionHandler from "./sessionHandler";
+import shopify from "./shopify";
 
 const fetchSession = async ({ req, res, isOnline }) => {
   //false for offline session, true for online session

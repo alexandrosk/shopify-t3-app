@@ -4,6 +4,7 @@ import { Redirect } from "@shopify/app-bridge/actions";
 import { Card, Layout, Link, Page } from "@shopify/polaris";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { trpc } from '@/utils/trpc';
 
 const GetData = () => {
   const router = useRouter();
@@ -12,7 +13,9 @@ const GetData = () => {
   const [responseData, setResponseData] = useState("");
   const [responseDataPost, setResponseDataPost] = useState("");
   const [responseDataGQL, setResponseDataGQL] = useState("");
+  const [responseTrpc, setResponseTrpc] = useState("");
   const fetch = useFetch();
+  const hello = trpc.hello.useQuery({ text: 'client' });
 
   async function fetchContent() {
     setResponseData("loading...");
@@ -36,6 +39,14 @@ const GetData = () => {
     setResponseDataPost(content);
   }
 
+  async function fetchTrpc() {
+    if (hello.data?.greeting) {
+        setResponseTrpc(hello.data?.greeting)
+    } else {
+        setResponseTrpc("loading...")
+    }
+  }
+
   async function fetchContentGQL() {
     setResponseDataGQL("loading...");
     const res = await fetch("/api/apps/debug/gql"); //fetch instance of useFetch()
@@ -47,6 +58,7 @@ const GetData = () => {
     fetchContent();
     fetchContentPost();
     fetchContentGQL();
+    fetchTrpc();
   }, []);
 
   return (
@@ -82,6 +94,21 @@ const GetData = () => {
           >
             <p>
               POST <code>"/apps/api" </code>: {responseDataPost}
+            </p>
+          </Card>
+        </Layout.Section>
+        <Layout.Section>
+          <Card
+              sectioned
+              primaryFooterAction={{
+                content: "Fetch Trpc",
+                onAction: () => {
+                  fetchTrpc();
+                },
+              }}
+          >
+            <p>
+              Fetch Trpc <code>"/api/trpc" </code>: {responseTrpc}
             </p>
           </Card>
         </Layout.Section>

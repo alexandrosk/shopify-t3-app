@@ -41,12 +41,19 @@
     "@shopify/app-bridge-utils": "^3.5.1",
     "@shopify/polaris": "^10.27.2",
     "@shopify/shopify-api": "^6.1.0",
+    "@tanstack/react-query": "^4.24.6",
+    "@trpc/client": "^10.11.1",
+    "@trpc/next": "^10.11.1",
+    "@trpc/react-query": "^10.11.1",
+    "@trpc/server": "^10.11.1",
     "cryptr": "^6.1.0",
     "graphql": "^16.6.0",
     "next": "13.1.6",
     "next-api-middleware": "^2.0.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "superjson": "^1.12.2",
+    "zod": "^3.20.6"
   },
   "devDependencies": {
     "@shopify/app": "^3.43.0",
@@ -56,7 +63,8 @@
     "ngrok": "^4.3.3",
     "npm-check-updates": "^16.7.4",
     "prettier": "^2.8.4",
-    "prisma": "^4.10.1"
+    "prisma": "^4.10.1",
+    "typescript": "4.9.5"
   },
   "overrides": {
     "@shopify/cli-kit": {
