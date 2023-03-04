@@ -22,7 +22,7 @@ const ExitFrame = () => {
 
   return (
     <>
-      <Spinner />
+      <Spinner/>
     </>
   );
 };
